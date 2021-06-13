@@ -62,4 +62,4 @@ def hashtag_search(username, password, hashtag):
         browser.quit()
 
 
-hashtag_search(username, password, 'warsawgirl')
+hashtag_search(username, password, 'hashtag')
