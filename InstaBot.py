@@ -6,21 +6,21 @@ import random
 
 
 def hashtag_search(username, password, hashtag):
-    browser = webdriver.Chrome()
+    driver = webdriver.Chrome()
 
     try:
-        browser.get('https://www.instagram.com')
+        driver.get('https://www.instagram.com')
         time.sleep(1)
 
-        browser.find_element_by_xpath('/html/body/div[2]/div/div/button[1]').click()
+        driver.find_element_by_xpath('/html/body/div[2]/div/div/button[1]').click()
         time.sleep(1)
 
-        username_input = browser.find_element_by_name('username')
+        username_input = driver.find_element_by_name('username')
         username_input.clear()
         username_input.send_keys(username)
         time.sleep(1)
 
-        password_input = browser.find_element_by_name('password')
+        password_input = driver.find_element_by_name('password')
         password_input.clear()
         password_input.send_keys(password)
 
@@ -28,10 +28,10 @@ def hashtag_search(username, password, hashtag):
         time.sleep(3)
 
         try:
-            browser.get(f'https://www.instagram.com/explore/tags/{hashtag}/')
+            driver.get(f'https://www.instagram.com/explore/tags/{hashtag}/')
             time.sleep(2)
 
-            hrefs = browser.find_elements_by_tag_name('a')
+            hrefs = driver.find_elements_by_tag_name('a')
 
             post_urls = []
             for item in hrefs:
@@ -42,24 +42,24 @@ def hashtag_search(username, password, hashtag):
 
 
             for url in post_urls:
-                browser.get(url)
+                driver.get(url)
                 time.sleep(random.randrange(1))
 
-                browser.find_element_by_xpath('/html/body/div[1]/section/main/div/div[1]/article/div[3]/section[1]/span[1]/button').click()
+                driver.find_element_by_xpath('/html/body/div[1]/section/main/div/div[1]/article/div[3]/section[1]/span[1]/button').click()
                 time.sleep(random.randrange(1))
 
-            browser.close()
-            browser.quit()
+            driver.close()
+            driver.quit()
 
         except Exception as ex:
             print(ex)
-            browser.close()
-            browser.quit()
+            driver.close()
+            driver.quit()
 
     except Exception as ex:
         print(ex)
-        browser.close()
-        browser.quit()
+        driver.close()
+        driver.quit()
 
 
 hashtag_search(username, password, 'hashtag')
