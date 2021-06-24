@@ -12,7 +12,7 @@ def hashtag_search(username, password, hashtag):
         driver.get('https://www.instagram.com')
         time.sleep(1)
 
-        driver.find_element_by_xpath('/html/body/div[2]/div/div/button[1]').click()
+        driver.find_element_by_css_selector('.bIiDR').click()
         time.sleep(1)
 
         username_input = driver.find_element_by_name('username')
